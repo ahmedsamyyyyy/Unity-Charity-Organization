@@ -1,0 +1,748 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="A growing collection of ready to use components for the CSS framework Bootstrap 5">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Current Donations</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+
+
+    <style>
+        /* inter-300 - latin */
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .card-container {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            border-image-slice: 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            /* Adding shadow effect */
+            transition: border-image 0.5s, box-shadow 0.5s;
+            /* Transition for both border image and shadow */
+            margin: 20px;
+        }
+        
+        .card-container:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            /* Changing shadow on hover */
+        }
+        
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .filter-container>div {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        
+        .options-container {
+            float: right;
+        }
+        
+        .custom-btn {
+            border-radius: 10px;
+            color: rgb(213, 161, 135);
+            background-color: rgb(22, 40, 54);
+            border: none;
+            padding: 10px 20px;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .custom-btn:hover,
+        .custom-btn:focus {
+            background-color: rgb(213, 161, 135);
+            color: rgb(22, 40, 54);
+        }
+        
+        .custom-btn:hover::before {
+            background-color: rgb(213, 161, 135);
+        }
+        
+        .delete-btn {
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background-color: red;
+            color: white;
+        }
+        
+        .confirm-delete-btn {
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .confirm-delete-btn:hover {
+            background-color: red;
+            color: white;
+        }
+        
+        .no-btn {
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .no-btn:hover {
+            background-color: rgb(38, 255, 0);
+            color: white;
+        }
+        
+        .modify-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modify-form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .modify-form input,
+        .modify-form select {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            /* This makes the button only as wide as its content */
+            width: 110px;
+            height: 40px;
+            /* This can be a specific value like '100px' if you want */
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+    </style>
+
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+    </style>
+
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+    </style>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navScroll">
+
+
+    <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
+        <div class="container">
+
+            <a href="organizationDashboard.html">
+                <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="CreateDonationOrganization.html" aria-label="Brings you to the frontpage">
+      Create Donation Post
+    </a>
+                    </li>
+
+                    </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
+Fullfilled Donations 
+</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="OrganizationCurrentDonations.html">Your Donation Posts</a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
+      Account Management
+    </a>
+                    </li>
+
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px; margin-left: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: rgb(207, 118, 80);">3</span>
+                        </a>
+                    </li>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <div class="container" style="margin-top: 75px;">
+            <div class="row justify-content-center" id="cardContainer">
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>
+        <div class="container small border-top">
+            <div class="row py-5 d-flex justify-content-between">
+
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <img src="UnityAssets/png/logo-black.png" style="width:200px" alt="">
+                    <address class="text-secondary mt-3">
+                <strong>Unity</strong><br>
+                Al Rehab City, New Cairo<br>
+                Cairo, EG 103021<br>
+                <abbr title="Phone">P:</abbr>
+                (+20) 1013455666
+              </address>
+                </div>
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <h3 class="h6 mb-3">Company</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" href="#">Organization Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-3 p-5">
+                    <h3 class="h6 mb-3">Subpages</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a> -->
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register System Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center py-3 small">Made by <a href="index.html" class="link-fancy" target="_blank">Unity</a>
+        </div>
+    </footer>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.setItem('organizationName', 'Resala');
+            const organizationName = localStorage.getItem('organizationName');
+
+            const organizationElem = document.querySelector("#adminCheck");
+
+            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
+
+        });
+    </script> -->
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+        });
+    </script>
+
+    <script>
+        let scrollpos = window.scrollY
+        const header = document.querySelector(".navbar")
+        const header_height = header.offsetHeight
+
+        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+
+        window.addEventListener('scroll', function() {
+            scrollpos = window.scrollY;
+
+            if (scrollpos >= header_height) {
+                add_class_on_scroll()
+            } else {
+                remove_class_on_scroll()
+            }
+
+            //console.log(scrollpos)
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let donations = [{
+                "Category": "clothes",
+                "Type": "T-shirt",
+                "Age": "Adult",
+                "Gender": "Male",
+                "Material": "Cotton",
+                "Quantity": 100,
+                "Season": "Summer",
+
+            }, {
+                "Category": "schoolSupplies",
+                "School Supplies Type": "Stationary",
+                "item": "Pens",
+                "Quantity": 200,
+
+            }, {
+                "Category": "medicalSupplies",
+                "Medical Supplies Type": "Devices",
+                "Name": "Heart rate monitor",
+                "Use": "Monitors heart rate ",
+                "Quantity": 10,
+            }, {
+                "Category": "bloodDonations",
+                "Blood Type": "O+",
+                "Hospital": "Magdi Yacoub Heart Hospital",
+                "Area": "Isis Temple",
+                "Governorate": "Aswan",
+                "Address": "123 Main Street",
+            }];
+
+            const cardContainer = document.getElementById('cardContainer');
+
+            donations.forEach((donation, index) => {
+                const card = document.createElement('div');
+                card.classList.add('col-md-9'); // Full width column
+                //card.classList.add('donation-card');
+                const cardBody = document.createElement('div');
+                cardBody.classList.add('card', 'card-container');
+                cardBody.setAttribute('data-index', index);
+                // Creating HTML structure for each donation item
+                let htmlContent = `<div class="card-body"  data-index="${index}">`;
+                Object.entries(donation).forEach(([key, value]) => {
+                    htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
+                });
+                htmlContent += `<button id="mod" class="modify-btn custom-btn" data-index="${index}" >Modify</button>`;
+                htmlContent += `<button id="del" class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>`;
+                htmlContent += '</div>';
+
+
+                cardBody.innerHTML = htmlContent;
+                card.appendChild(cardBody);
+                cardContainer.appendChild(card);
+            });
+
+            cardContainer.addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.classList.contains('modify-btn')) {
+                    // Handle modify button click
+                    const index = parseInt(target.getAttribute('data-index'));
+                    const donation = donations[index];
+                    openModifyForm(donation, index);
+                } else if (target.classList.contains('delete-btn')) {
+                    const index = parseInt(target.getAttribute('data-index'));
+                    const card = target.closest('.card');
+                    if (card) {
+                        const confirmationMessage = document.createElement('div');
+                        confirmationMessage.classList.add('confirmation-message');
+                        confirmationMessage.dataset.index = index;
+                        confirmationMessage.innerHTML = `
+                <p><b>Are you sure you want to delete this post?</p>
+                <button class="confirm-delete-btn btn btn-danger btn-sm " style="margin-right: 5px;" data-index="${index}">Yes</button>
+                <button class="cancel-delete btn btn-secondary btn-sm no-btn" data-index="${index}">No</button>
+            `;
+                        const cardBody = card.querySelector('.card-body');
+                        if (cardBody) {
+                            cardBody.innerHTML = ''; // Clear existing content
+                            cardBody.appendChild(confirmationMessage);
+                        }
+                    }
+                }
+
+
+            });
+
+            cardContainer.addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.classList.contains('confirm-delete-btn')) {
+                    const index = parseInt(target.dataset.index);
+                    const card = target.closest('.card');
+                    deleteDonation(card, index);
+                } else if (target.classList.contains('cancel-delete')) {
+                    const card = target.closest('.card');
+                    if (card) {
+                        const index = parseInt(target.dataset.index);
+                        const donation = donations[index];
+                        let htmlContent = '';
+                        Object.entries(donation).forEach(([key, value]) => {
+                            htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
+                        });
+                        htmlContent += `<button class="custom-btn modify-btn" data-index="${index}">Modify</button>`;
+                        htmlContent += `<button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>`;
+                        const cardBody = card.querySelector('.card-body');
+                        if (cardBody) {
+                            cardBody.innerHTML = htmlContent;
+                        }
+                    }
+                }
+
+            });
+
+
+            function openModifyForm(donation, index) {
+                const cardBody = document.querySelector(`[data-index="${index}"] .card-body`);
+
+
+
+
+                // Clear the existing content of the card body
+                cardBody.innerHTML = '';
+
+                // Create a form element
+                const form = document.createElement('form');
+                form.classList.add('modify-form');
+
+                // Loop through each key-value pair in the donation object
+                Object.entries(donation).forEach(([key, value]) => {
+                    // Create a label element
+                    const label = document.createElement('label');
+                    label.textContent = `${key}:`;
+
+                    if (key === 'Age') { // For example, change 'Category' to the appropriate field name
+                        // Create a select element
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['Adult', 'Child', 'Teen']; // Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else if (key === 'Gender') { // For example, change 'Category' to the appropriate field name
+                        // Create a select element
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['Male', 'Female', 'Unisex']; // Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else if (key === 'Season') { // For example, change 'Category' to the appropriate field name
+                        // Create a select element
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['Summer', 'Fall', 'Winter', 'Spring']; // Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else if (key === 'Quantity') {
+                        const input = document.createElement('input');
+                        input.setAttribute('type', 'number');
+                        input.setAttribute('name', key);
+                        input.setAttribute('value', value);
+
+                        // Append label and input to the form
+                        form.appendChild(label);
+                        form.appendChild(input);
+                    } else if (key === 'Blood Type') {
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['All', 'A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-']; // Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+
+                    } else if (key === 'Hospital') {
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['Bahya Hospital', 'Magdi Yacoub Heart Hospital', 'El Salam Hospital']; // Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else if (key === 'Area') {
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['All', 'El Haram', 'El Marg', 'Isis Temple']; // Example options
+
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else if (key === 'Governorate') {
+                        const select = document.createElement('select');
+                        select.setAttribute('name', key);
+                        // Add options to the select element
+                        const options = ['All', 'Cairo', 'Giza', 'Aswan']; // Example options// Example options
+                        options.forEach(option => {
+                            const optionElement = document.createElement('option');
+                            optionElement.value = option;
+                            optionElement.textContent = option;
+                            select.appendChild(optionElement);
+                        });
+
+                        // Set the value of the select element to the current value of the field
+                        select.value = value;
+
+                        // Append label and select to the form
+                        form.appendChild(label);
+                        form.appendChild(select);
+                    } else {
+                        // Create an input element
+                        const input = document.createElement('input');
+                        input.setAttribute('type', 'text');
+                        input.setAttribute('name', key);
+                        input.setAttribute('value', value);
+
+                        if (key === 'School Supplies Type' || key === 'Medical Supplies Type' || key === 'Category') {
+                            input.disabled = true;
+                        }
+
+                        // Append label and input to the form
+                        form.appendChild(label);
+                        form.appendChild(input);
+                    }
+                });
+
+                // Create a submit button
+                const submitBtn = document.createElement('button');
+                submitBtn.textContent = 'Submit';
+                submitBtn.classList.add('submit-btn', 'btn', 'btn-primary', 'btn-sm', 'custom-btn');
+                form.appendChild(submitBtn);
+
+                // Append the form to the card body
+                cardBody.appendChild(form);
+
+                // Add event listener to the form submit button
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    form.querySelectorAll('input[disabled]').forEach(input => {
+                        input.removeAttribute('disabled');
+                    });
+                    // Extract the form data
+                    const formData = new FormData(form);
+
+                    // Create an object to hold the modified donation data
+                    const modifiedDonation = {};
+                    formData.forEach((value, key) => {
+                        modifiedDonation[key] = value;
+                    });
+
+                    // Update the donations array with the modified donation
+                    donations[index] = modifiedDonation;
+
+                    // Re-render the card with the updated donation data
+                    renderDonationCard(index);
+
+                    // Optionally, you can close the form or perform any other action here
+                });
+            }
+
+
+            function renderDonationCard(index) {
+                const cardBody = document.querySelector(`[data-index="${index}"] .card-body`);
+                const donation = donations[index];
+                let htmlContent = `<div class="card-body"  data-index="${index}" >`;
+                Object.entries(donation).forEach(([key, value]) => {
+                    htmlContent += `<p><strong>${key}:</strong> ${value}</p>`;
+                });
+                htmlContent += `<button class="modify-btn custom-btn" data-index="${index}">Modify</button>`;
+                htmlContent += `<button class="btn btn-danger btn-sm delete-btn" data-index="${index}">Delete</button>`;
+                htmlContent += '</div>';
+                cardBody.innerHTML = htmlContent;
+            }
+
+            function deleteDonation(cardElement, index) {
+                if (cardElement) {
+                    cardElement.remove();
+                    // Remove the donation from the array
+                    donations.splice(index, 1);
+                    // Update the data-index attributes of all remaining cards
+                    console.log("Updated donations array:", donations);
+                    const cards = document.querySelectorAll('.card-container');
+                    cards.forEach((card, newIndex) => {
+                        if (card) card.setAttribute('data-index', newIndex);
+                        const modifyBtn = card.querySelector('.modify-btn');
+                        const deleteBtn = card.querySelector('.delete-btn');
+                        const cardBody = card.querySelector('.card-body');
+                        //const c=card.querySelector('.card-container');
+                        //const x=card.querySelector('.card');
+                        //if(x) x.setAttribute('data-index', newIndex);
+                        //if(c) c.setAttribute('data-index', newIndex);
+                        if (cardBody) cardBody.setAttribute('data-index', newIndex);
+                        if (modifyBtn) modifyBtn.setAttribute('data-index', newIndex);
+                        if (deleteBtn) deleteBtn.setAttribute('data-index', newIndex);
+                    });
+
+                }
+
+            }
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

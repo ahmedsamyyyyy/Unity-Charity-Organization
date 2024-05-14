@@ -1,0 +1,226 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Register Organization</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+    <style>
+        /* inter-300 - latin */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body class="d-flex h-100 w-100" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+    <div class="h-100 container-fluid">
+        <div class="h-100 row d-flex align-items-stretch">
+
+            <div class="col-12 col-md-7 col-lg-6 d-flex align-items-start flex-column px-vw-5">
+
+                <header class="mb-auto py-vh-2 col-12">
+                    <a class="navbar-brand pe-4 fs-4" href="/">
+                        <img src="UnityAssets/png/logo-no-background.png" style="width:150px;" alt>
+                    </a>
+
+                </header>
+
+                <main class="mb-auto col-12">
+                    <h1>Registration</h1>
+
+                    <form class="row" id="registrationForm">
+                        <div class="col-12 col-lg-10 col-xl-8">
+
+                            <label style="font-size: 20px;">Organization Details</label>
+                            <input type="text" class="form-control form-control-lg" id="orgName" style="margin-bottom: 10px;" placeholder="Organization Name">
+                            <div class="error-message" id="orgNameError" style="display: none;">Please enter Organization Name</div>
+
+                            <input type="text" class="form-control form-control-lg" id="orgType" style="margin-bottom: 10px;" placeholder="Organization Type">
+                            <div class="error-message" id="orgTypeError" style="display: none;">Please enter Organization Type</div>
+
+                            <input type="text" class="form-control form-control-lg" id="orgAddress" style="margin-bottom: 10px;" placeholder="Address">
+                            <div class="error-message" id="orgAddressError" style="display: none;">Please enter Address</div>
+
+                            <input type="text" class="form-control form-control-lg" id="orgArea" style="margin-bottom: 10px;" placeholder="Area">
+                            <div class="error-message" id="orgAreaError" style="display: none;">Please enter Area</div>
+
+                            <input type="text" class="form-control form-control-lg" id="orgGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+                            <div class="error-message" id="orgGovernorateError" style="display: none;">Please enter Governorate</div>
+
+                            <input type="text" class="form-control form-control-lg" id="orgPostalCode" style="margin-bottom: 10px;" placeholder="Postal Code">
+                            <div class="error-message" id="orgPostalCodeError" style="display: none;">Please enter Postal Code</div>
+
+                            <label style="font-size: 20px;">Please specify the location</label>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                                width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                            <label style="font-size: 20px;">Please upload documents verifying your organization's status</label>
+                            <input type="file" class="form-control form-control-lg" id="orgQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
+                            <div class="error-message" id="orgQualificationsError" style="display: none;">Please upload documents</div>
+
+                            <button type="button" class="btn btn-primary btn-lg btn-block" id="registerButton" style="background-color: #162836; color: #D5A187;">Register</button>
+
+                        </div>
+                    </form>
+                    <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
+                    <a href="Registration.html" class="link-fancy" style="margin-top: 20px;margin-bottom: 20px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                            </svg> Back</a>
+                </main>
+
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-6 bg-cover" style="background-image: url(UnityAssets/126501.jpg);"></div>
+
+        </div>
+
+        <footer class="mt-auto py-vh-2">
+            <!-- Footer content here -->
+        </footer>
+
+    </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById("registerButton").addEventListener("click", function(event) {
+            var orgName = document.getElementById("orgName").value;
+            var orgType = document.getElementById("orgType").value;
+            var orgAddress = document.getElementById("orgAddress").value;
+            var orgArea = document.getElementById("orgArea").value;
+            var orgGovernorate = document.getElementById("orgGovernorate").value;
+            var orgPostalCode = document.getElementById("orgPostalCode").value;
+            var orgQualifications = document.getElementById("orgQualifications").value;
+
+            if (!orgName) {
+                document.getElementById("orgName").classList.add("error");
+                document.getElementById("orgNameError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgName").classList.remove("error");
+                document.getElementById("orgNameError").style.display = "none";
+            }
+
+            if (!orgType) {
+                document.getElementById("orgType").classList.add("error");
+                document.getElementById("orgTypeError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgType").classList.remove("error");
+                document.getElementById("orgTypeError").style.display = "none";
+            }
+
+            if (!orgAddress) {
+                document.getElementById("orgAddress").classList.add("error");
+                document.getElementById("orgAddressError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgAddress").classList.remove("error");
+                document.getElementById("orgAddressError").style.display = "none";
+            }
+
+            if (!orgArea) {
+                document.getElementById("orgArea").classList.add("error");
+                document.getElementById("orgAreaError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgArea").classList.remove("error");
+                document.getElementById("orgAreaError").style.display = "none";
+            }
+
+            if (!orgGovernorate) {
+                document.getElementById("orgGovernorate").classList.add("error");
+                document.getElementById("orgGovernorateError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgGovernorate").classList.remove("error");
+                document.getElementById("orgGovernorateError").style.display = "none";
+            }
+
+            if (!orgPostalCode) {
+                document.getElementById("orgPostalCode").classList.add("error");
+                document.getElementById("orgPostalCodeError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgPostalCode").classList.remove("error");
+                document.getElementById("orgPostalCodeError").style.display = "none";
+            }
+
+            if (!orgQualifications) {
+                document.getElementById("orgQualifications").classList.add("error");
+                document.getElementById("orgQualificationsError").style.display = "block";
+                event.preventDefault();
+            } else {
+                document.getElementById("orgQualifications").classList.remove("error");
+                document.getElementById("orgQualificationsError").style.display = "none";
+            }
+
+            if (orgName && orgType && orgAddress && orgArea && orgGovernorate && orgPostalCode && orgQualifications) {
+                window.location.href = "RegistrationRequestPending.html";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
