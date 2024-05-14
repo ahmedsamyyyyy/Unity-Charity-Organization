@@ -1,0 +1,585 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Register Now</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+    <style>
+        /* inter-300 - latin */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        .xxx:hover {
+            border-image: linear-gradient(to right, #ffffff 50%, #FFFFFF 50%);
+            box-shadow: 0 0 10px rgba(75, 77, 109, 0.7);
+            /* Changing shadow on hover */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            /* Added margin */
+        }
+    </style>
+
+</head>
+
+<body class="d-flex h-100 w-100" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+    <div class="h-100 container-fluid">
+        <div class="h-100 row d-flex align-items-stretch">
+
+            <div class="col-12 col-md-7 col-lg-6 d-flex align-items-start flex-column px-vw-5">
+
+                <header class="mb-auto py-vh-2 col-12">
+                    <a class="navbar-brand pe-4 fs-4" href="/">
+                        <img src="UnityAssets/png/logo-no-background.png" style="width:150px;" alt>
+                    </a>
+
+                </header>
+                <main class="mb-auto col-12">
+                    <h1>Registeration</h1>
+
+                    <form class="row" id="loginForm">
+                        <div class="col-12 col-lg-10 col-xl-8">
+                            <div class="mb-3">
+                                <label for="userType" id="registerLabel" class="form-label">Register as</label>
+                                <select class="form-select form-select-lg form-control-lg form-control-color" id="userType" aria-label="Default select example" style="display: block; width: 200px;">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="donor">Donor</option>
+                                    <option value="organization">Organization</option>
+                                </select>
+                            </div>
+
+                            <div id="donorFields" style="display: none;">
+
+                                <input type="text" class="form-control form-control-lg" id="donorFirstName" style="margin-bottom: 10px;" placeholder="First Name">
+                                <div class="error-message" style="display: none;">Please enter a valid first name.</div>
+
+                                <input type="text" class="form-control form-control-lg" id="donorLastName" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <div class="error-message" style="display: none;">Please enter a valid last name.</div>
+                                <input type="email" class="form-control form-control-lg" id="donorEmail" style="margin-bottom: 10px;" placeholder="Email">
+                                <div class="error-message" style="display: none;">Please enter a valid email address.</div>
+
+                                <input type="password" class="form-control form-control-lg" id="donorPassword" style="margin-bottom: 10px;" placeholder="Password">
+                                <div class="error-message" style="display: none;">Please enter a password.</div>
+
+                                <input type="password" class="form-control form-control-lg" id="donorConfirmPassword" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <div class="error-message" style="display: none;">Please confirm your password.</div>
+                                <div class="error-message" id="passwordMatchError" style="display: none;">Passwords do not match.</div>
+
+                                <input type="tel" class="form-control form-control-lg" id="donorContactNumber" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <div class="error-message" style="display: none;">Please enter your contact number.</div>
+
+                                <input type="text" class="form-control form-control-lg" id="donorAddress" style="margin-bottom: 10px;" placeholder="Address">
+                                <div class="error-message" style="display: none;">Please enter your address.</div>
+
+                                <input type="text" class="form-control form-control-lg" id="donorArea" style="margin-bottom: 10px;" placeholder="Area">
+                                <div class="error-message" style="display: none;">Please enter your area.</div>
+
+                                <input type="text" class="form-control form-control-lg" id="donorGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+                                <div class="error-message" style="display: none;">Please enter your governorate.</div>
+
+                                <select class="form-control-lg" id="donorGender" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+
+
+                                <label style="font-size: 20px;">How are you interested in helping?</label>
+                                <form>
+                                    <select class="form-control-lg" id="donorTypeSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                        <option selected disabled style="opacity: 0.5;">Choose..</option>
+                                        <option value="regularDonor">Materialistic Donations Only</option>
+                                        <option value="teacher">Pro-Bono Teacher</option>
+                                        <option value="doctor">Pro-Bono Doctor</option>
+                                    </select>
+                                </form>
+                                <button type="button" class="btn btn-primary btn-lg btn-block btn xxx" id="continue2" style="background-color: #162836; color: #D5A187;">Continue</button>
+
+                            </div>
+
+                            <div id="organizationRepFields" style="display: none;">
+                                <input type="text" class="form-control form-control-lg" id="orgRepFirstName" style="margin-bottom: 10px;" placeholder="First Name">
+                                <div class="error-message" style="display: none;">Please enter your first name.</div>
+
+                                <input type="text" class="form-control form-control-lg" id="orgRepLastName" style="margin-bottom: 10px;" placeholder="Last Name">
+                                <div class="error-message" style="display: none;">Please enter your last name.</div>
+
+                                <div class="error-message" style="display: none;">Please select your gender.</div>
+
+                                <input type="email" class="form-control form-control-lg" id="orgRepEmail" style="margin-bottom: 10px;" placeholder="Email">
+                                <div class="error-message" style="display: none;">Please enter a valid email address.</div>
+
+                                <input type="password" class="form-control form-control-lg" id="orgRepPassword" style="margin-bottom: 10px;" placeholder="Password">
+                                <div class="error-message" style="display: none;">Please enter a password.</div>
+
+                                <input type="password" class="form-control form-control-lg" id="orgRepConfirmPassword" style="margin-bottom: 10px;" placeholder="Confirm Password">
+                                <div class="error-message" style="display: none;">Please confirm your password.</div>
+                                <div class="error-message" id="passwordMatchError" style="display: none;">Passwords do not match.</div>
+
+                                <input type="tel" class="form-control form-control-lg" id="orgRepContactNumber" style="margin-bottom: 10px;" placeholder="Contact Number">
+                                <div class="error-message" style="display: none;">Please enter your contact number.</div>
+
+                                <select class="form-control-lg" id="orgRepGender" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+
+                                <button type="button" class="btn btn-primary btn-lg btn-block btn xxx" id="goToOrg" style="background-color: #162836; color: #D5A187;">Continue</button>
+                            </div>
+
+                            <div id="organizationFields" style="display: none;">
+                                <label style="font-size: 20px;">Organization Details</label>
+                                <input type="text" class="form-control form-control-lg" id="orgName" style="margin-bottom: 10px;" placeholder="Organization Name">
+                                <input type="text" class="form-control form-control-lg" id="orgType" style="margin-bottom: 10px;" placeholder="Organization Type">
+                                <input type="text" class="form-control form-control-lg" id="orgAddress" style="margin-bottom: 10px;" placeholder="Address">
+                                <input type="text" class="form-control form-control-lg" id="orgArea" style="margin-bottom: 10px;" placeholder="Area">
+                                <input type="text" class="form-control form-control-lg" id="orgGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+                                <input type="text" class="form-control form-control-lg" id="orgPostalCode" style="margin-bottom: 10px;" placeholder="Postal Code">
+
+                                <label style="font-size: 20px;">Please specify the location</label>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                                <label style="font-size: 20px;">Please upload documents verifying your organization's status</label>
+                                <input type="file" class="form-control form-control-lg" id="orgQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
+
+
+                            </div>
+
+
+
+                            <div id="doctorDonor" style="display: none;">
+                                <input type="text" class="form-control form-control-lg" id="clinicAddress" style="margin-bottom: 10px;" placeholder="Clinic Address">
+                                <input type="text" class="form-control form-control-lg" id="clinicArea" style="margin-bottom: 10px;" placeholder="Clinic Area">
+                                <input type="text" class="form-control form-control-lg" id="clinicGovernorate" style="margin-bottom: 10px;" placeholder="Governorate">
+
+                                <input type="text" class="form-control form-control-lg" id="medicalSpecialty" style="margin-bottom: 10px;" placeholder="Medical Specialty">
+
+                                <label style="font-size: 20px;">Specify the clinic's location</label>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453287.261398587!2d29.707814777083875!3d26.75602249947906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458385ca2bc7e77%3A0xd3b3fca6aee9f257!2sEgypt!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                                <label style="font-size: 20px;">How many patients would you be able to help?</label>
+                                <input type="number" class="form-control form-control-lg" id="proBonoPatients" style="margin-bottom: 10px;" min="1" placeholder="# Pro-Bono Patients">
+
+                                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <label style="font-size: 20px;">Please upload your medical license.</label>
+                                <input type="file" class="form-control form-control-lg" id="medicalLicense" style="margin-bottom: 10px;" placeholder="Qualifications">
+
+                            </div>
+
+                            <div id="teacherDonor" style="display: none;">
+                                <label style="font-size: 20px;">How many subjects can you teach?</label>
+                                <input type="number" id='numOfSubjects' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="How many subjects can you teach?">
+
+                                <div id="subjectFields"></div>
+
+                                <label style="font-size: 20px;">How many classes can you help?</label>
+                                <input type="number" id='numOfClasses' class="form-control form-control-lg" style="margin-bottom: 10px;" min="0" placeholder="# Of Classes">
+
+                                <label style="font-size: 20px;">Would you be interested in private tutoring?</label>
+                                <select class="form-control-lg" id="privateTutorSelect" aria-label="Default select example" style="display: block; margin-bottom: 10px;">
+                                    <option selected disabled style="opacity: 0.5;">Choose..</option>
+                                    <option value="yesPrivate">Yes</option>
+                                    <option value="noPrivate">No</option>
+                                </select>
+
+                                <div id="numOfStudent" style="display: none;">
+                                    <label style="font-size: 20px;">Specify the number of students</label>
+                                    <input type="number" id='numOfStudents' class="form-control form-control-lg" style="margin-bottom: 10px;" min="1" placeholder="# Of Students">
+                                </div>
+
+
+                                <label style="font-size: 20px;">We need to verify your qualifications.</label>
+                                <label style="font-size: 20px;">Please upload a letter from a school's HR.</label>
+                                <input type="file" class="form-control form-control-lg" id="teacherQualifications" style="margin-bottom: 10px;" placeholder="Qualifications">
+                            </div>
+
+                            <div class="mb-3 form-check py-3">
+
+                            </div>
+                            <div>
+                                <a class="nav-link link-fancy ps-0" aria-current="page" href="donorLogin.html" style="margin-bottom: 30px; margin-top: 20px;">Already have an account</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="pending" style="display: none;"> Your registration request is now pending confirmation.</div>
+
+                </main>
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-6 bg-cover" style="background-image: url(UnityAssets/126501.jpg);"></div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        const donorTypeSelect = document.getElementById('donorTypeSelect');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const userTypeSelect = document.getElementById('userType');
+            const donorFields = document.getElementById('donorFields');
+            const organizationRepFields = document.getElementById('organizationRepFields');
+            const registerLabel = document.getElementById('registerLabel');
+
+            const donorTypeSelect = document.getElementById('donorTypeSelect');
+            const teacherDonor = document.getElementById('teacherDonor');
+            const doctorDonor = document.getElementById('doctorDonor');
+
+            const subjectNumber = document.getElementById('numOfSubjects');
+
+            const privateTutorSelect = document.getElementById('privateTutorSelect');
+            const studentNum = document.getElementById('numOfStudent');
+
+            const registerButton = document.getElementById('registerButton');
+
+            const organizationFields = document.getElementById('organizationFields');
+            const continueButton = document.getElementById('goToOrg');
+
+            const continueButton2 = document.getElementById('continue2');
+
+            userTypeSelect.addEventListener('change', function() {
+                const selectedUserType = userTypeSelect.value;
+
+                if (selectedUserType === 'donor') {
+                    donorFields.style.display = 'block';
+                    organizationRepFields.style.display = 'none';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                    registerButton.style.display = 'block';
+                } else if (selectedUserType === 'organization') {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'block';
+                    userTypeSelect.style.display = 'none';
+                    registerLabel.style.display = 'none';
+                    registerButton.style.display = 'none';
+                    registerButton.style.display = 'block';
+
+                } else {
+                    donorFields.style.display = 'none';
+                    organizationRepFields.style.display = 'none';
+                }
+            });
+
+            subjectNumber.addEventListener('change', function() {
+                let numOfSubjects = parseInt(subjectNumber.value);
+                const subjectFields = document.getElementById('subjectFields');
+
+                // Clear existing fields
+                subjectFields.innerHTML = '';
+
+                for (let i = 0; i < numOfSubjects; i++) {
+                    const newField = document.createElement('input');
+                    newField.type = 'text';
+                    newField.classList.add('form-control', 'form-control-lg');
+                    newField.style.marginBottom = '10px';
+                    newField.placeholder = 'Subject Name';
+                    subjectFields.appendChild(newField);
+                }
+            });
+
+            privateTutorSelect.addEventListener('change', function() {
+                const privateValue = privateTutorSelect.value;
+
+                if (privateValue === 'yesPrivate') {
+                    studentNum.style.display = 'block';
+                } else {
+                    studentNum.style.display = 'none';
+                }
+            });
+
+            continueButton.addEventListener('click', function() {
+                // Get all input fields in organization representative section
+                const orgRepFirstName = document.getElementById('orgRepFirstName').value.trim();
+                const orgRepLastName = document.getElementById('orgRepLastName').value.trim();
+                const orgRepGender = document.getElementById('orgRepGender').value.trim();
+                const orgRepEmail = document.getElementById('orgRepEmail').value.trim();
+                const orgRepContactNumber = document.getElementById('orgRepContactNumber').value.trim();
+                const orgRepPassword = document.getElementById('orgRepPassword').value.trim();
+                const orgRepConfirmPassword = document.getElementById('orgRepConfirmPassword').value.trim();
+
+                // Check if all fields are filled and passwords match
+                if (orgRepFirstName && orgRepLastName && orgRepGender && orgRepEmail && orgRepContactNumber && orgRepPassword && orgRepConfirmPassword && orgRepPassword === orgRepConfirmPassword) {
+                    window.location.href = "OrgReg.html";
+                } else {
+                    // Show error message or handle accordingly
+                    const orgRepFields = document.querySelectorAll('#organizationRepFields input');
+                    orgRepFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            field.classList.add('error');
+                            const errorMessage = field.nextElementSibling;
+                            errorMessage.style.display = 'block';
+                        } else {
+                            field.classList.remove('error');
+                            const errorMessage = field.nextElementSibling;
+                            errorMessage.style.display = 'none';
+                        }
+                    });
+                    if (orgRepPassword !== orgRepConfirmPassword) {
+                        const passwordField = document.getElementById('orgRepPassword');
+                        const confirmPasswordField = document.getElementById('orgRepConfirmPassword');
+                        passwordField.classList.add('error');
+                        confirmPasswordField.classList.add('error');
+                        const errorMessage = document.getElementById('passwordMatchError');
+                        errorMessage.style.display = 'block';
+                    } else {
+                        const passwordField = document.getElementById('orgRepPassword');
+                        const confirmPasswordField = document.getElementById('orgRepConfirmPassword');
+                        passwordField.classList.remove('error');
+                        confirmPasswordField.classList.remove('error');
+                        const errorMessage = document.getElementById('passwordMatchError');
+                        errorMessage.style.display = 'none';
+                    }
+                }
+            });
+
+            continueButton2.addEventListener('click', function() {
+                // Get all input fields in the donor section
+                const donorFirstName = document.getElementById('donorFirstName').value.trim();
+                const donorLastName = document.getElementById('donorLastName').value.trim();
+                const donorGender = document.getElementById('donorGender').value.trim();
+                const donorEmail = document.getElementById('donorEmail').value.trim();
+                const donorContactNumber = document.getElementById('donorContactNumber').value.trim();
+                const donorPassword = document.getElementById('donorPassword').value.trim();
+                const donorConfirmPassword = document.getElementById('donorConfirmPassword').value.trim();
+                const donorAddress = document.getElementById('donorAddress').value.trim();
+                const donorArea = document.getElementById('donorArea').value.trim();
+                const donorGovernorate = document.getElementById('donorGovernorate').value.trim();
+                const selectedOption = document.getElementById('userType').value;
+                const donorTypeSelect = document.getElementById('donorTypeSelect').value;
+
+                // Check if all donor fields are filled
+                if (!donorFirstName ||
+                    !donorLastName ||
+                    !donorGender ||
+                    !donorEmail ||
+                    !donorContactNumber ||
+                    !donorPassword ||
+                    !donorConfirmPassword ||
+                    !donorAddress ||
+                    !donorArea ||
+                    !donorGovernorate) {
+
+                    highlightEmptyFields();
+                    return; // Exit the function if any field is empty
+                }
+
+                // Check if passwords match
+                if (donorPassword !== donorConfirmPassword) {
+
+                    highlightPasswords();
+                    return; // Exit the function if passwords do not match
+                }
+
+                // Check the selected donor type and redirect
+                if (donorTypeSelect === "teacher") {
+                    window.location.href = "ProbonoTeacherReg.html";
+                } else if (donorTypeSelect === "doctor") {
+                    window.location.href = "ProbonoDoctorReg.html";
+                } else {
+                    window.location.href = "RegistrationRequestPending.html";
+                }
+            });
+
+            function highlightEmptyFields() {
+                const donorFields = document.querySelectorAll('#donorFields input');
+                donorFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('error');
+                        const errorMessage = field.nextElementSibling;
+                        errorMessage.style.display = 'block';
+                    } else {
+                        field.classList.remove('error');
+                        const errorMessage = field.nextElementSibling;
+                        errorMessage.style.display = 'none';
+                    }
+                });
+            }
+
+            function highlightPasswords() {
+                const passwordField = document.getElementById('donorPassword');
+                const confirmPasswordField = document.getElementById('donorConfirmPassword');
+                passwordField.classList.add('error');
+                confirmPasswordField.classList.add('error');
+                const errorMessage = document.getElementById('passwordMatchError');
+                errorMessage.style.display = 'block';
+            }
+
+
+
+
+
+
+            registerButton.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Validate email
+                if (!validateEmail(donorEmail.value)) {
+                    showError(donorEmail);
+                } else {
+                    hideError(donorEmail);
+                }
+
+                // Validate contact number
+                if (!validateContactNumber(donorContactNumber.value)) {
+                    showError(donorContactNumber);
+                } else {
+                    hideError(donorContactNumber);
+                }
+
+                // Validate password
+                if (!validatePassword(donorPassword.value)) {
+                    showError(donorPassword);
+                } else {
+                    hideError(donorPassword);
+                }
+
+                // Validate confirmed password
+                if (!validateConfirmedPassword(donorPassword.value, donorConfirmPassword.value)) {
+                    showError(donorConfirmPassword);
+                } else {
+                    hideError(donorConfirmPassword);
+                }
+
+                // Validate address
+                if (!validateInput(donorAddress.value)) {
+                    showError(donorAddress);
+                } else {
+                    hideError(donorAddress);
+                }
+
+                // Validate area
+                if (!validateInput(donorArea.value)) {
+                    showError(donorArea);
+                } else {
+                    hideError(donorArea);
+                }
+
+                // Validate governorate
+                if (!validateInput(donorGovernorate.value)) {
+                    showError(donorGovernorate);
+                } else {
+                    hideError(donorGovernorate);
+                }
+            });
+
+            function validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            function validateContactNumber(number) {
+                const numberRegex = /^\d{10}$/;
+                return numberRegex.test(number);
+            }
+
+            function validatePassword(password) {
+                return password.length >= 8;
+            }
+
+            function validateConfirmedPassword(password, confirmedPassword) {
+                return password === confirmedPassword;
+            }
+
+            function validateInput(input) {
+                return input.trim() !== '';
+            }
+
+            function showError(input) {
+                input.classList.add('error');
+                input.nextElementSibling.style.display = 'block';
+            }
+
+            function hideError(input) {
+                input.classList.remove('error');
+                input.nextElementSibling.style.display = 'none';
+            }
+
+            function validateFill() {
+                let allFilled = true;
+
+                const inputs = document.querySelectorAll('input');
+                const selects = document.querySelectorAll('select');
+
+                inputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        allFilled = false;
+                    }
+                });
+
+                selects.forEach(select => {
+                    if (!select.value.trim()) {
+                        allFilled = false;
+                    }
+                });
+
+                return allFilled;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

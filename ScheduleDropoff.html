@@ -1,0 +1,336 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="description" content="A growing collection of ready to use components for the CSS framework Bootstrap 5">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="UnityAssets/png/unity-favicon-color.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="UnityAssets/png/unity-favicon-color.png">
+    <meta name="author" content="Holger Koenemann">
+    <meta name="generator" content="Eleventy v2.0.0">
+    <meta name="HandheldFriendly" content="true">
+    <title>Schedule Drop-off</title>
+    <link rel="stylesheet" href="css/theme.min.css">
+
+
+
+    <style>
+        /* inter-300 - latin */
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-300.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-500.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local(''), url('./fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('./fonts/inter-v12-latin-700.woff') format('woff');
+            /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    </style>
+
+    <style>
+        /* Add custom CSS to hide dropdown by default */
+        
+        .dropdown-item {
+            margin: 3px 0 5px -25px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            /* Adjust as needed */
+        }
+        
+        .error {
+            border: 1px solid red;
+            box-shadow: 0px 0px 10px 1px red;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        /* Show dropdown when hovering over the dropdown item */
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        li {
+            list-style: none;
+        }
+    </style>
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navScroll">
+
+
+    <nav id="navScroll" class="navbar navbar-expand-lg  fixed-top" tabindex="0">
+        <div class="container">
+
+            <a href="organizationDashboard.html">
+                <img src="UnityAssets/png/logo-no-background.png" style="width:150px; margin-right: 50px;" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="CreateDonationOrganization.html" aria-label="Brings you to the frontpage">
+      Create Donation Post
+    </a>
+                    </li>
+
+                    </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px; " href="fullfilledDonations.html" aria-label="Brings you to the frontpage">
+Fullfilled Donations 
+</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="OrganizationCurrentDonations.html">Your Donation Posts</a>
+
+                    </li>
+
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link link-fancy dropdown-toggle" id="navbarDropdown" role="button" style="margin-right: 10px;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Requests</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="link link-fancy dropdown-item" href="ViewOrganizationSubmission.html">Delete</a></li>
+                            <li><a class="link link-fancy dropdown-item" href="ViewDonorSubmission.html">View Donor Details</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link link-fancy" style="margin-right: 10px;" href="organizationAccountManagment.html">
+      Account Management
+    </a>
+                    </li>
+
+                    <li class="nav-item position-relative">
+                        <a href="organizationNotification.html" aria-label="Brings you to the notifications">
+                            <img src="UnityAssets/png/notification.png" style="width: 50px; margin-left: 50px;" alt="Notifications">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </li>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 100px;"></div>
+    <main class="mb-auto col-20" style="margin-left: 388px; margin-bottom: 20px; margin-top: 80px;">
+        <h1 style="margin-top:30px ;" class="title">Schedule Drop-off: </h1>
+
+        <!-- <label for="transportation">Pick up selection:</label>
+        <select id="transportation" style="display: block; margin-bottom: 10px;width: 110px; height: 30px; border-radius: 5px;font-size: medium; border-color: rgb(22, 40, 54); border-width: 2px;">
+            <option value="truck" style="text-align: center; font-size: medium;">Truck</option>
+            <option value="car" style="text-align: center; font-size: medium;">Car</option>
+            <option value="motorcycle" style="text-align: center; font-size: medium;">Motorcycle</option>
+        </select> -->
+
+        <label for="date" style="display: block;">Pick up date: </label>
+        <input type="date" style="display: block; margin-bottom: 10px; border-radius: 5px;" id="date">
+
+        <label for="time">Pick up time: </label>
+        <input type="time" style="display: block; margin-bottom: 20px; border-radius: 5px; border-color: rgb(22, 40, 54); border-width: 2px;" id="time">
+
+
+        <a class="btn btn-primary" style="border-radius: 5px; margin-bottom: 10px;" id="submitBtn">Submit Drop-off</a>
+
+        <br>
+        <div class="timeLeft">
+
+        </div>
+
+
+
+
+
+        <a href="organizationNotification.html" class="link-fancy" style="margin-bottom: 20px; margin-top: 10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    </svg> Go back to notifications</a>
+
+    </main>
+    </div>
+
+    <footer>
+        <div class="container small border-top">
+            <div class="row py-5 d-flex justify-content-between">
+
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <img src="UnityAssets/png/logo-black.png" style="width:200px" alt="">
+                    <address class="text-secondary mt-3">
+                <strong>Unity</strong><br>
+                Al Rehab City, New Cairo<br>
+                Cairo, EG 103021<br>
+                <abbr title="Phone">P:</abbr>
+                (+20) 1013455666
+              </address>
+                </div>
+                <div class="col-12 col-lg-6 col-xl-3 border-end p-5">
+                    <h3 class="h6 mb-3">Company</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-fancy ps-0" href="#">Organization Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-3 p-5">
+                    <h3 class="h6 mb-3">Subpages</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link link-fancy ps-0" aria-current="page" href="404.html">404 System Page</a> -->
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="Registration.html">Register System Page</a>
+                            <a class="nav-link link-fancy ps-0" aria-current="page" href="index.html">Home Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center py-3 small">Made by <a href="https://templatedeck.com" class="link-fancy" target="_blank">Unity</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.setItem('organizationName', 'Resala');
+            const organizationName = localStorage.getItem('organizationName');
+
+            const organizationElem = document.querySelector("#adminCheck");
+
+            organizationElem.textContent = `Welcome to your dashboard, ${organizationName}`
+
+        });
+    </script>
+
+    <script>
+        function calculateTimeRemaining() {
+            // Get the pick-up date and time
+            const pickUpDate = new Date(document.querySelector('#date').value);
+            const pickUpTime = new Date(`2000-01-01T${document.querySelector('#time').value}`);
+
+            // Combine date and time
+            const pickUpDateTime = new Date(pickUpDate.getFullYear(), pickUpDate.getMonth(), pickUpDate.getDate(), pickUpTime.getHours(), pickUpTime.getMinutes(), pickUpTime.getSeconds());
+
+            // Update the timeLeft div every second
+            setInterval(() => {
+                // Get the current date and time
+                const now = new Date();
+
+                // Calculate the time difference in milliseconds
+                const timeDiff = pickUpDateTime - now;
+
+                // Convert time difference to hours, minutes, and seconds
+                const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                // Update the timeLeft div with the calculated time remaining
+                const timeLeftDiv = document.querySelector('.timeLeft');
+                timeLeftDiv.innerHTML = `<h3>Time left until pick-up: ${hours} hours, ${minutes} minutes, ${seconds} seconds </h3>`;
+            }, 1000); // Update every second
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
+    </script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+        });
+    </script>
+
+    <script>
+        let scrollpos = window.scrollY
+        const header = document.querySelector(".navbar")
+        const header_height = header.offsetHeight
+
+        const add_class_on_scroll = () => header.classList.add("scrolled", "shadow-sm")
+        const remove_class_on_scroll = () => header.classList.remove("scrolled", "shadow-sm")
+
+        window.addEventListener('scroll', function() {
+            scrollpos = window.scrollY;
+
+            if (scrollpos >= header_height) {
+                add_class_on_scroll()
+            } else {
+                remove_class_on_scroll()
+            }
+
+            console.log(scrollpos)
+        })
+
+        function calculateTimeRemaining() {
+            const pickUpDate = new Date(document.querySelector('#date').value);
+            const pickUpTime = new Date(`2000-01-01T${document.querySelector('#time').value}`);
+            const pickUpDateTime = new Date(pickUpDate.getFullYear(), pickUpDate.getMonth(), pickUpDate.getDate(), pickUpTime.getHours(), pickUpTime.getMinutes(), pickUpTime.getSeconds());
+
+            const updateTimer = () => {
+                const now = new Date();
+                const timeDiff = pickUpDateTime - now;
+
+                if (timeDiff <= 0) {
+                    clearInterval(timerInterval); // Stop the timer
+                    alert("The driver has arrived to drop-off your donation !");
+                } else {
+                    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                    const timeLeftDiv = document.querySelector('.timeLeft');
+                    timeLeftDiv.innerHTML = `<h3>Time left until pick-up: ${hours} hours, ${minutes} minutes, ${seconds} seconds </h3>`;
+                }
+            };
+
+            // Call updateTimer initially to avoid delay
+            updateTimer();
+
+            // Update the timer every second
+            const timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', calculateTimeRemaining);
+    </script>
+
+
+</body>
+
+</html>
